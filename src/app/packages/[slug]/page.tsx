@@ -27,6 +27,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export const revalidate = 60; // ISR validation
 
+export async function generateStaticParams() {
+  try {
+    const packages = await db.package.findMany({
+      where: { active: true },
+      select: { slug: true },
+    });
+    return packages.map((pkg) => ({
+      slug: pkg.slug,
+    }));
+  } catch {
+    return [];
+  }
+}
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
