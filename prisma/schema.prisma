@@ -1,0 +1,88 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id                String   @id @default(uuid())
+  email             String   @unique
+  passwordHash      String
+  twoFactorSecret   String?
+  twoFactorEnabled  Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  action      String
+  details     String
+  adminEmail  String
+  timestamp   DateTime @default(now())
+}
+
+model Package {
+  id            String   @id @default(uuid())
+  slug          String   @unique
+  title         String
+  destination   String
+  duration      String   // e.g. "3 Days / 2 Nights"
+  category      String   // South India, North India, International, Hill Station
+  description   String
+  inclusions    String   // newline or semicolon-separated
+  exclusions    String   // newline or semicolon-separated
+  terms         String
+  refundPolicy  String
+  tripCode      String   @unique
+  minGroupSize  Int      @default(1)
+  price         Float    // Base price
+  active        Boolean  @default(true)
+  lastUpdated   DateTime @default(now()) @updatedAt
+
+  images        Media[]
+  itinerary     ItineraryDay[]
+  pricingTiers  PricingTier[]
+  inquiries     Inquiry[]
+}
+
+model ItineraryDay {
+  id          String   @id @default(uuid())
+  dayNumber   Int
+  title       String
+  description String
+  packageId   String
+  package     Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model PricingTier {
+  id          String   @id @default(uuid())
+  label       String   // e.g. "2-4 Pax", "5-8 Pax"
+  price       Float
+  packageId   String
+  package     Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model Media {
+  id          String   @id @default(uuid())
+  url         String
+  altText     String?
+  type        String   @default("image") // "image" or "video"
+  isHero      Boolean  @default(false)
+  packageId   String?
+  package     Package? @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model Inquiry {
+  id          String   @id @default(uuid())
+  name        String
+  email       String
+  phone       String
+  message     String
+  status      String   @default("New") // "New", "Contacted", "Booked"
+  packageId   String?
+  package     Package? @relation(fields: [packageId], references: [id])
+  createdAt   DateTime @default(now())
+}

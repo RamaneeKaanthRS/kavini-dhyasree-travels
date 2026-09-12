@@ -1,0 +1,12 @@
+.git
+.agent
+.agents
+.claude
+.windsurf
+.vscode
+three_d_camera/
+stayphotos/
+design-system/
+website_details.md
+skills-lock.json
+*.db-journal
