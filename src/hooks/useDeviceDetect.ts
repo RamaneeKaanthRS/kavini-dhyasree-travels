@@ -9,20 +9,20 @@ export function useDeviceDetect() {
   useEffect(() => {
     let lowEnd = false;
 
-    // Check CPU cores
-    if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+    // Check CPU cores (e.g. 1-2 cores)
+    if (typeof navigator !== "undefined" && navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
       lowEnd = true;
     }
 
-    // Check Device Memory (RAM)
-    // @ts-ignore - deviceMemory is not in all TS standard definitions yet
-    if (navigator.deviceMemory && navigator.deviceMemory < 4) {
+    // Check Device Memory (RAM in GB, e.g. <= 4GB)
+    // @ts-expect-error - deviceMemory is not in all TS standard definitions yet
+    if (typeof navigator !== "undefined" && navigator.deviceMemory && navigator.deviceMemory <= 4) {
       lowEnd = true;
     }
 
     // Check if Data Saver is enabled
-    // @ts-ignore - connection is not in all TS standard definitions
-    if (navigator.connection && navigator.connection.saveData) {
+    // @ts-expect-error - connection is not in all TS standard definitions
+    if (typeof navigator !== "undefined" && navigator.connection && navigator.connection.saveData) {
       lowEnd = true;
     }
 
@@ -32,3 +32,4 @@ export function useDeviceDetect() {
 
   return { isLowEnd, isReady };
 }
+

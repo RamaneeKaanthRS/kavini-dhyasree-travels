@@ -28,8 +28,23 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
   ({ items, className, radius = 600, autoRotateSpeed = 0.02, ...props }, ref) => {
     const [rotation, setRotation] = useState(0);
     const [isScrolling, setIsScrolling] = useState(false);
+    const [isInView, setIsInView] = useState(true);
+    const containerRef = useRef<HTMLDivElement>(null);
     const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const animationFrameRef = useRef<number | null>(null);
+
+    // Pause animation when component is outside the viewport
+    useEffect(() => {
+      const el = containerRef.current;
+      if (!el || typeof IntersectionObserver === "undefined") return;
+
+      const observer = new IntersectionObserver(([entry]) => {
+        setIsInView(entry.isIntersecting);
+      }, { threshold: 0.05 });
+
+      observer.observe(el);
+      return () => observer.disconnect();
+    }, []);
 
     useEffect(() => {
       const handleScroll = () => {
@@ -58,6 +73,11 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
     }, []);
 
     useEffect(() => {
+      if (!isInView) {
+        if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+        return;
+      }
+
       const autoRotate = () => {
         if (!isScrolling) {
           setRotation(prev => prev + autoRotateSpeed);
@@ -72,13 +92,17 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
           cancelAnimationFrame(animationFrameRef.current);
         }
       };
-    }, [isScrolling, autoRotateSpeed]);
+    }, [isScrolling, autoRotateSpeed, isInView]);
 
     const anglePerItem = 360 / items.length;
 
     return (
       <div
-        ref={ref}
+        ref={(node) => {
+          containerRef.current = node;
+          if (typeof ref === "function") ref(node);
+          else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+        }}
         role="region"
         aria-label="Circular 3D Gallery"
         className={cn("relative w-full h-full flex items-center justify-center", className)}

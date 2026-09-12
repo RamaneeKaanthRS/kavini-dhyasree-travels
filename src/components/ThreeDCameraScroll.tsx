@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
+import { useDeviceDetect } from "@/hooks/useDeviceDetect";
 
 export interface ThreeDCameraScrollProps {
   /**
@@ -41,6 +42,7 @@ export default function ThreeDCameraScroll({
   showProgress = false,
 }: ThreeDCameraScrollProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { isLowEnd } = useDeviceDetect();
   
   // Track whole window scroll progress (0 to 1)
   const { scrollYProgress } = useScroll();
@@ -105,7 +107,10 @@ export default function ThreeDCameraScroll({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const dpr = typeof window !== "undefined" ? Math.min(window.devicePixelRatio || 1, 2) : 1;
+    // Cap DPR to 1 on low-spec hardware (1 CPU / low RAM) to reduce canvas buffer size by 75%
+    const dpr = typeof window !== "undefined" 
+      ? (isLowEnd ? 1 : Math.min(window.devicePixelRatio || 1, 2)) 
+      : 1;
     const w = window.innerWidth;
     const h = window.innerHeight;
 
@@ -121,7 +126,7 @@ export default function ThreeDCameraScroll({
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawImageCover(ctx, img, canvas.width, canvas.height, currentFrame === actualStart);
     }
-  }, [currentFrame, actualStart, drawImageCover]);
+  }, [currentFrame, actualStart, drawImageCover, isLowEnd]);
 
   // Helper to load a single frame on-demand
   const loadSingleFrame = useCallback((i: number): Promise<void> => {
@@ -188,8 +193,8 @@ export default function ThreeDCameraScroll({
         }
       }
 
-      // Step size for Pass 1 based on range size
-      const step1 = totalFrames > 300 ? 8 : totalFrames > 100 ? 5 : 3;
+      // Step size for Pass 1 based on range size and hardware spec
+      const step1 = isLowEnd ? (totalFrames > 300 ? 10 : 6) : (totalFrames > 300 ? 8 : totalFrames > 100 ? 5 : 3);
       const pass1: number[] = [];
       for (let f = actualStart; f <= actualEnd; f += step1) {
         if (!imagesMapRef.current.has(f)) pass1.push(f);
@@ -197,10 +202,16 @@ export default function ThreeDCameraScroll({
       for (let i = 0; i < pass1.length; i += 10) {
         if (isCancelled) return;
         await Promise.all(pass1.slice(i, i + 10).map(loadSingleFrame));
-        setLoadedPercentage(Math.min(100, Math.round((i / pass1.length) * 50)));
+        setLoadedPercentage(Math.min(100, Math.round((i / pass1.length) * (isLowEnd ? 100 : 50))));
       }
 
-      // Pass 2: Fill in remaining frames smoothly
+      // On low-end / <= 4GB RAM hardware: stop after keyframes to cap memory footprint to <60MB
+      if (isLowEnd) {
+        setLoadedPercentage(100);
+        return;
+      }
+
+      // Pass 2: Fill in remaining frames smoothly for high-spec hardware
       const remaining: number[] = [];
       for (let f = actualStart; f <= actualEnd; f++) {
         if (!imagesMapRef.current.has(f)) remaining.push(f);
@@ -215,7 +226,7 @@ export default function ThreeDCameraScroll({
 
     loadProgressively();
     return () => { isCancelled = true; };
-  }, [actualStart, actualEnd, totalFrames, loadSingleFrame, drawImageCover]);
+  }, [actualStart, actualEnd, totalFrames, loadSingleFrame, drawImageCover, isLowEnd]);
 
   // Window resize handler
   useEffect(() => {
