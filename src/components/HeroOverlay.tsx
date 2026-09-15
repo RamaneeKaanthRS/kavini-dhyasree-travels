@@ -116,7 +116,7 @@ export default function HeroOverlay({ heroFeaturedPkg, heroFeaturedImg }: HeroOv
             className="inline-flex items-center gap-2 bg-black/40 hover:bg-black/60 text-white backdrop-blur-md px-6 py-3.5 rounded-full border border-white/20 text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all hover:scale-105"
           >
             <Car className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Cars from ₹1,800</span>
+            <span>Cars from ₹1,799</span>
           </Link>
           <Link
             href="/off-road"

@@ -17,7 +17,7 @@ export default function RoomsPage() {
     ? ROOMS_DATA
     : ROOMS_DATA.filter(r => r.category === filterType);
 
-  const customRoomUrl = getWhatsAppUrl('Hello, I want to check room availability and pricing in Yercaud (Rooms from ₹2,000/day | Cottages & Homestays: Enquiry Alone).');
+  const customRoomUrl = getWhatsAppUrl('Hello, I want to check room availability and pricing in Yercaud (Rooms from ₹1,999/day | Cottages & Homestays: Enquiry Alone).');
 
   return (
     <div className="relative min-h-screen text-white pt-24 pb-10 overflow-hidden">
@@ -38,11 +38,11 @@ export default function RoomsPage() {
         </div>
 
         <h1 className="font-heading text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6">
-          Scenic Mountain Stays <span className="text-emerald-400">from ₹2,000/day</span>
+          Scenic Mountain Stays <span className="text-emerald-400">from ₹1,999/day</span>
         </h1>
 
         <p className="text-white/80 text-base sm:text-lg font-light max-w-3xl mx-auto leading-relaxed mb-8">
-          Single & double rooms from ₹2,000/day with private balconies, family suites (up to 5 people), and exclusive private cottages & homestay villas (up to 25 people — Enquiry Alone).
+          Single & double rooms from ₹1,999/day with private balconies, family suites (up to 5 people), and exclusive private cottages & homestay villas (up to 25 people — Enquiry Alone).
         </p>
 
         {/* Capacity Quick Highlights */}
@@ -52,7 +52,7 @@ export default function RoomsPage() {
             <div>
               <h4 className="text-xs font-bold text-white uppercase tracking-wider">Individual Rooms</h4>
               <p className="text-xs text-white/70 mt-1 font-light">
-                Starting from <strong>₹2,000/day</strong>. Family suites comfortably fit up to <strong>5 people</strong>.
+                Starting from <strong>₹1,999/day</strong>. Family suites comfortably fit up to <strong>5 people</strong>.
               </p>
             </div>
           </div>

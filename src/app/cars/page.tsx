@@ -50,23 +50,23 @@ export default function CarsPage() {
         <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-white/70">
           <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
             <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Swift from ₹1,800</span>
+            <span>Swift from ₹1,799</span>
           </div>
           <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
             <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Ertiga from ₹2,400</span>
+            <span>Ertiga from ₹2,399</span>
           </div>
           <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
             <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Innova from ₹3,000</span>
+            <span>Innova from ₹2,999</span>
           </div>
           <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
             <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Off-Road Package from ₹4,500</span>
+            <span>Off-Road Package from ₹4,499</span>
           </div>
           <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
             <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Pickup + Stay Combo ~₹6,000</span>
+            <span>Pickup + Stay Combo ~₹5,999</span>
           </div>
         </div>
       </section>

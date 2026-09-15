@@ -85,7 +85,7 @@ export default function RoomCard({ room }: RoomCardProps) {
               <div className="text-white font-heading text-2xl sm:text-3xl font-bold flex items-baseline gap-1.5 drop-shadow-md">
                 <span>₹{room.startingPrice?.toLocaleString('en-IN')}</span>
                 <span className="text-xs font-normal text-white/70 tracking-normal font-sans">
-                  / day (Starting from ₹2,000/day)
+                  / day (Starting from ₹1,999/day)
                 </span>
               </div>
             )}
@@ -196,7 +196,7 @@ export default function RoomCard({ room }: RoomCardProps) {
           <p className="text-[10px] text-center text-white/40 mt-2">
             {room.isEnquiryOnly
               ? '* Cottage & Homestay rates provided upon enquiry alone based on group size & dates.'
-              : '* Rooms starting from ₹2,000/day. Exact rate depends on dates, guests & package.'}
+              : '* Rooms starting from ₹1,999/day. Exact rate depends on dates, guests & package.'}
           </p>
 
         </div>

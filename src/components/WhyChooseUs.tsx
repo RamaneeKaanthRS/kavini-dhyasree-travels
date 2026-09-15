@@ -17,7 +17,7 @@ export default function WhyChooseUs() {
     {
       icon: Award,
       title: 'Transparent Starting Rates',
-      desc: 'Honest, upfront pricing starting from ₹1,800 for cabs and ₹2,000/day for rooms with zero surprise fees.'
+      desc: 'Honest, upfront pricing starting from ₹1,799 for cabs and ₹1,999/day for rooms with zero surprise fees.'
     },
     {
       icon: Clock,

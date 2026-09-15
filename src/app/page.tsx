@@ -33,19 +33,19 @@ export default async function HomePage() {
     },
     {
       common: 'Deluxe Balcony Hill Room',
-      binomial: 'Valley Facing | from ₹2,000/day',
+      binomial: 'Valley Facing | from ₹1,999/day',
       photo: { url: '/stayphotos/stay_photo00014.jpeg', text: 'Deluxe Balcony Room', by: 'Kavini Dhyasree' },
       href: '/rooms',
     },
     {
       common: 'Spacious Family Hill Suite',
-      binomial: '4 - 5 Guests | from ₹3,500/day',
+      binomial: '4 - 5 Guests | from ₹3,499/day',
       photo: { url: '/stayphotos/stay_photo00003.jpeg', text: 'Spacious Family Suite', by: 'Kavini Dhyasree' },
       href: '/rooms',
     },
     {
       common: 'Cozy Valley Retreat Room',
-      binomial: 'Peaceful Mountain Stay | from ₹2,000/day',
+      binomial: 'Peaceful Mountain Stay | from ₹1,999/day',
       photo: { url: '/stayphotos/stay_photo00006.jpeg', text: 'Cozy Valley Room', by: 'Kavini Dhyasree' },
       href: '/rooms',
     },
@@ -63,7 +63,7 @@ export default async function HomePage() {
     },
     {
       common: 'Estate View Master Suite',
-      binomial: 'Lush Coffee Plantation View | from ₹2,000/day',
+      binomial: 'Lush Coffee Plantation View | from ₹1,999/day',
       photo: { url: '/stayphotos/stay_photo00015.jpeg', text: 'Master Suite', by: 'Kavini Dhyasree' },
       href: '/rooms',
     },
@@ -167,7 +167,7 @@ export default async function HomePage() {
                 </div>
                 <h3 className="font-heading text-xl sm:text-2xl text-white tracking-wide drop-shadow-md">Competitive Pricing</h3>
                 <p className="text-xs sm:text-sm text-white/80 font-light leading-relaxed drop-shadow-md">
-                  Transparent rates with no hidden fees starting at ₹1,800, giving you unmatched value for premium travel.
+                  Transparent rates with no hidden fees starting at ₹1,799, giving you unmatched value for premium travel.
                 </p>
               </div>
             </div>

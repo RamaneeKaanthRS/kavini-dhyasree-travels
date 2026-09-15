@@ -23,8 +23,8 @@ export const ROOMS_DATA: RoomAccommodation[] = [
     category: 'Single Bed',
     capacity: '1 - 2 Guests (Flexible Bedding)',
     maxGuests: 2,
-    startingPrice: 2000,
-    priceNote: 'Starting from ₹2,000/day',
+    startingPrice: 1999,
+    priceNote: 'Starting from ₹1,999/day',
     isEnquiryOnly: false,
     primaryImage: '/stayphotos/stay_photo00006.jpeg',
     galleryImages: [
@@ -52,8 +52,8 @@ export const ROOMS_DATA: RoomAccommodation[] = [
     category: 'Double Bed',
     capacity: '2 - 3 Guests',
     maxGuests: 3,
-    startingPrice: 2000,
-    priceNote: 'Starting from ₹2,000/day',
+    startingPrice: 1999,
+    priceNote: 'Starting from ₹1,999/day',
     isEnquiryOnly: false,
     primaryImage: '/stayphotos/stay_photo00014.jpeg',
     galleryImages: [
@@ -84,8 +84,8 @@ export const ROOMS_DATA: RoomAccommodation[] = [
     category: 'Large Family Room',
     capacity: 'Accommodates up to 5 People',
     maxGuests: 5,
-    startingPrice: 2000,
-    priceNote: 'Starting from ₹2,000/day',
+    startingPrice: 1999,
+    priceNote: 'Starting from ₹1,999/day',
     isEnquiryOnly: false,
     primaryImage: '/stayphotos/stay_photo00015.jpeg',
     galleryImages: [

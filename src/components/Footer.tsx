@@ -35,7 +35,7 @@ export default function Footer() {
               <li><Link href="/cars" className="hover:text-emerald-400 transition-colors cursor-pointer">Swift / Innova / Ertiga</Link></li>
               <li><Link href="/off-road" className="hover:text-emerald-400 transition-colors cursor-pointer">4x4 Mountain Trails</Link></li>
               <li><Link href="/experiences" className="hover:text-emerald-400 transition-colors cursor-pointer">Private Estate & Waterfalls</Link></li>
-              <li><Link href="/rooms" className="hover:text-emerald-400 transition-colors cursor-pointer">Hill Stay from ₹2,000/day</Link></li>
+              <li><Link href="/rooms" className="hover:text-emerald-400 transition-colors cursor-pointer">Hill Stay from ₹1,999/day</Link></li>
               <li><Link href="/packages?category=Hill+Station" className="hover:text-emerald-400 transition-colors cursor-pointer">Hill Station Packages</Link></li>
             </ul>
           </div>

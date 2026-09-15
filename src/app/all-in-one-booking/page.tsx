@@ -176,7 +176,7 @@ export default function AllInOneBookingPage() {
                 Scenic Mountain Stays
               </h2>
               <p className="text-white/70 text-sm sm:text-base mt-2 max-w-2xl font-light">
-                Authentic Yercaud accommodations from comfortable single rooms starting at ₹2,000/day to private cottages and homestays available upon direct enquiry.
+                Authentic Yercaud accommodations from comfortable single rooms starting at ₹1,999/day to private cottages and homestays available upon direct enquiry.
               </p>
             </div>
             <Link

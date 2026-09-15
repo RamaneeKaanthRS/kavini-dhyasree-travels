@@ -62,7 +62,7 @@ export default function ExperiencesPage() {
             <div>
               <h4 className="text-xs font-bold text-amber-300 uppercase tracking-wider">Private Estate Access</h4>
               <p className="text-xs text-amber-200/80 mt-1 font-light leading-relaxed">
-                Many scenic gems are located inside private coffee plantations. Certain private estate attractions may carry approx. <strong>₹1,000 additional estate charges</strong>.
+                Many scenic gems are located inside private coffee plantations. Certain private estate attractions may carry approx. <strong>₹999 additional estate charges</strong>.
               </p>
             </div>
           </div>

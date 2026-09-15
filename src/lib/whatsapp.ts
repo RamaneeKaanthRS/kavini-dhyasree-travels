@@ -92,7 +92,7 @@ export function buildRoomEnquiryMessage(options: {
     msg += ` for ${duration}`;
   }
   if (!isEnquiryOnly) {
-    msg += ' (Starting from ₹2,000/day).';
+    msg += ' (Starting from ₹1,999/day).';
   } else {
     msg += '.';
   }
